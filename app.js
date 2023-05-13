@@ -14,25 +14,34 @@ function playRound(playerSelection, computerSelection) {
     scissors: 'paper' // Scissors beats Paper 
   };
 
-  console.log(`Player: ${playerSelection}\nComputer: ${computerSelection}`);
-
   if (outcomes[computerSelection] === playerSelection) {
+    computerScore += 1;
     return `You Lose! ${computerSelection} beats ${playerSelection}`;
   } else if (outcomes[playerSelection] === computerSelection) {
+    playerScore += 1;
     return `You Win! ${playerSelection} beats ${computerSelection}`;
   } else {
     return 'Draw!';
   }
 }
- 
+
+function showWinner(playerScore, computerScore) {
+  return 'Calculating the winner...'// TODO
+}
+
+let playerScore = 0;
+let computerScore = 0;
 function game() {
-  let i = 0;
-  while (i < 5) {
+  let round = 0;
+  while (round < 5) {
     const playerSelection = prompt('Pick your choice!');
     const computerSelection = getComputerChoice();
     console.log(playRound(playerSelection.toLowerCase(), computerSelection));
-    i++;
+    //console.log(`Player: ${playerScore}\nComputer: ${computerScore}`);
+    round++;
   }
+
+  console.log(showWinner(playerScore, computerScore));
 }
 
 game();
