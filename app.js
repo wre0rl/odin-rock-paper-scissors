@@ -26,7 +26,14 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function showWinner(playerScore, computerScore) {
-  return 'Calculating the winner...'// TODO
+  const finalScore = `Player: ${playerScore}\nComputer: ${computerScore}\n`
+  if (playerScore > computerScore) {
+    return `${finalScore}Player is the final winner! Congrats!`;
+  } else if (computerScore > playerScore) {
+    return `${finalScore}Computer is the final winner!`;
+  } else {
+    return `${finalScore}The final result is draw!`;
+  }
 }
 
 let playerScore = 0;
@@ -40,7 +47,6 @@ function game() {
     //console.log(`Player: ${playerScore}\nComputer: ${computerScore}`);
     round++;
   }
-
   console.log(showWinner(playerScore, computerScore));
 }
 
