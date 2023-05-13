@@ -26,10 +26,9 @@ function playRound(playerSelection, computerSelection) {
 }
  
 function game() {
-  const playerSelection = "Scissors";
-    
   let i = 0;
   while (i < 5) {
+    const playerSelection = prompt('Pick your choice!');
     const computerSelection = getComputerChoice();
     console.log(playRound(playerSelection.toLowerCase(), computerSelection));
     i++;
