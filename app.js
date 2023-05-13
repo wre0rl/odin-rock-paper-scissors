@@ -25,6 +25,16 @@ function playRound(playerSelection, computerSelection) {
   }
 }
  
-const playerSelection = "Scissors";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection.toLowerCase(), computerSelection));
+function game() {
+  const playerSelection = "Scissors";
+    
+  let i = 0;
+  while (i < 5) {
+    const computerSelection = getComputerChoice();
+    console.log(playRound(playerSelection.toLowerCase(), computerSelection));
+    i++;
+  }
+}
+
+game();
+
