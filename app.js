@@ -24,10 +24,7 @@ function computeScore(playerSelection, computerSelection) {
   }
 }
 
-function updateScore(playerScore, computerScore) {
-  const playerScoreContent = document.querySelector('.player-score-content');
-  const computerScoreContent = document.querySelector('.computer-score-content');
-
+function updateScore() {
   playerScoreContent.textContent = playerScore;
   computerScoreContent.textContent = computerScore;
 }
@@ -54,6 +51,8 @@ function showWinner(playerScore, computerScore) {
 const btns = document.querySelectorAll('.rpc-button');
 const playerChoiceContent = document.querySelector('.player-choice');
 const computerChoiceContent = document.querySelector('.computer-choice');
+const playerScoreContent = document.querySelector('.player-score-content');
+const computerScoreContent = document.querySelector('.computer-score-content');
 
 let playerScore = 0;
 let computerScore = 0;
@@ -70,7 +69,7 @@ function playRound() {
 
   // Compute, update, show the scores and choices for each round
   computeScore(playerSelection, computerSelection);
-  updateScore(playerScore, computerScore);
+  updateScore();
   updateChoice(playerSelection, computerSelection);
 
   // Count and reset if the round is = 5
@@ -82,7 +81,7 @@ function reset() {
   round = 0; 
   playerScore = 0; 
   computerScore = 0;
-  updateScore(playerScore, computerScore); // Reset the score text
+  updateScore(); // Reset the score text
   updateChoice('?', '?'); // Reset the choice text
 }
 
