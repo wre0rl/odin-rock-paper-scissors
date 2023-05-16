@@ -40,13 +40,10 @@ let playerScore = 0;
 let computerScore = 0;
 function game() {
   let round = 0;
-  while (round < 5) {
-    const playerSelection = prompt('Pick your choice!');
-    const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection.toLowerCase(), computerSelection));
-    //console.log(`Player: ${playerScore}\nComputer: ${computerScore}`);
-    round++;
-  }
+  const playerSelection = prompt('Pick your choice!');
+  const computerSelection = getComputerChoice();
+  console.log(playRound(playerSelection.toLowerCase(), computerSelection));
+  round++;
   console.log(showWinner(playerScore, computerScore));
 }
 
