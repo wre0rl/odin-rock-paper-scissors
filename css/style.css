@@ -1,0 +1,40 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.scores {
+  display: flex;
+  gap: 5px;
+}
+
+.player-score, .computer-score {
+  width: 120px;
+  text-align: center;
+}
+
+.player-score-heading, .computer-score-heading {
+  font-size: 18px;
+}
+
+.player-score-content, .computer-score-content {
+  font-size: 32px;
+}
+
+.choices {
+  display: flex;
+  gap: 5px;
+}
+
+.player-choice, .computer-choice {
+  border: 1px solid black;
+  width: 120px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
