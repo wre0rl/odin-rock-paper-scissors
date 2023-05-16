@@ -71,7 +71,7 @@ function game() {
   playRound(playerSelection, computerSelection);
   showScore(playerScore, computerScore);
 
-  // Count and stop if the round is = 5
+  // Count and reset if the round is = 5
   round++;
   if (round === 5) reset();
   console.log(round);
