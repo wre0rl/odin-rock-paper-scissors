@@ -16,18 +16,15 @@ function playRound(playerSelection, computerSelection) {
 
   if (outcomes[computerSelection] === playerSelection) {
     computerScore += 1;
-    console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
   } else if (outcomes[playerSelection] === computerSelection) {
     playerScore += 1;
-    console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
   } else {
     playerScore += 1;
     computerScore += 1;
-    console.log('Draw!');
   }
 }
 
-function showScore(playerScore, computerScore) {
+function updateScore(playerScore, computerScore) {
   const playerScoreContent = document.querySelector('.player-score-content');
   const computerScoreContent = document.querySelector('.computer-score-content');
 
@@ -35,15 +32,23 @@ function showScore(playerScore, computerScore) {
   computerScoreContent.textContent = computerScore;
 }
 
+function updateChoice(playerSelection, computerSelection) {
+  playerChoiceContent.textContent = playerSelection;
+  computerChoiceContent.textContent = computerSelection;
+}
+
 function showWinner(playerScore, computerScore) {
+  const modalContent = document.querySelector('.modal-content');
 
   if (playerScore > computerScore) {
-    return `Player is the final winner! Congrats!`;
+    modalContent.textContent = 'You win!';
   } else if (computerScore > playerScore) {
-    return `Computer is the final winner!`;
+    modalContent.textContent = 'You lose!';
   } else {
-    return `The final result is draw!`;
+    modalContent.textContent = "It's a draw!";
   }
+
+  modal.showModal();
 }
 
 const btns = document.querySelectorAll('.rpc-button');
@@ -63,22 +68,29 @@ function game() {
   const playerSelection = this.id;
   const computerSelection = getComputerChoice();
 
-  // Render player and computer choice text
-  playerChoiceContent.textContent = playerSelection;
-  computerChoiceContent.textContent = computerSelection;
-
-  // Play, update and show the score for each round
+  // Play, update, show the scores and choices for each round
   playRound(playerSelection, computerSelection);
-  showScore(playerScore, computerScore);
+  updateScore(playerScore, computerScore);
+  updateChoice(playerSelection, computerSelection);
 
   // Count and reset if the round is = 5
   round++;
-  if (round === 5) reset();
-  console.log(round);
+  if (round === 5) showWinner(playerScore, computerScore);
 }
 
 function reset() {
   round = 0; 
   playerScore = 0; 
-  computerScore = 0
+  computerScore = 0;
+  updateScore(playerScore, computerScore); // Reset the score text
+  updateChoice('?', '?'); // Reset the choice text
 }
+
+
+const modal = document.querySelector('.modal');
+const closeModal = document.querySelector('.close-modal');
+
+closeModal.addEventListener('click', () => {
+  modal.close();
+  reset();
+});
