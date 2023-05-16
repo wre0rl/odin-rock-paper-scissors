@@ -7,7 +7,7 @@ function getComputerChoice() {
   return el.random();
 }
 
-function playRound(playerSelection, computerSelection) {
+function computeScore(playerSelection, computerSelection) {
   const outcomes = {
     Rock: 'Scissors', // Rock beats Scissors
     Paper: 'Rock', // Paper beats Rock
@@ -60,16 +60,16 @@ let computerScore = 0;
 let round = 0;
 
 btns.forEach((btn) => {
-  btn.addEventListener('click', game);
+  btn.addEventListener('click', playRound);
 });
 
-function game() {
+function playRound() {
   // Get the player and computer selections
   const playerSelection = this.id;
   const computerSelection = getComputerChoice();
 
-  // Play, update, show the scores and choices for each round
-  playRound(playerSelection, computerSelection);
+  // Compute, update, show the scores and choices for each round
+  computeScore(playerSelection, computerSelection);
   updateScore(playerScore, computerScore);
   updateChoice(playerSelection, computerSelection);
 
